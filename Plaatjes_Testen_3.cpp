@@ -32,6 +32,9 @@ void beweegset(const double speed, const double theta,
 }
 
 
+//    void beweegt_ie(
+
+
 int main()
 {
 	
@@ -42,6 +45,8 @@ int main()
 	const double PI = 4*atan(1);
 	
 	const double delta_var = 0.001;
+	
+	const double micro_var = 0.000001;
 	
 	assert(delta_var > 0);
 	
@@ -61,7 +66,7 @@ int main()
 	
 	
 	
-	const std::string programma_naam = "Plaatjes_Testen_2";
+	const std::string programma_naam = "Plaatjes_Testen_3";
 	assert(programma_naam != "");
 	
 	
@@ -131,7 +136,7 @@ int main()
 	
 	sf::Vector2f plaatje_pos;
 	
-	const sf::Vector2f rel_pos_1(0.75*window_x, 0.25*window_y);
+	const sf::Vector2f rel_pos_1(0.25*window_x, 0.75*window_y);
 	
 	const sf::Vector2f rel_pos_2(0.5*window_x, 0.75*window_y);
 	
@@ -233,10 +238,10 @@ int main()
 		
 		plaatje_pos = plaatje_sprite.getPosition();
 		
-		if (!((plaatje_pos.x > rel_pos_2.x - delta_var*abs(delta_pos.x)) &&
-			(plaatje_pos.x < rel_pos_2.x + delta_var*abs(delta_pos.x)) &&
-			(plaatje_pos.y > rel_pos_2.y - delta_var*abs(delta_pos.y)) &&
-			(plaatje_pos.y < rel_pos_2.y + delta_var*abs(delta_pos.y))))
+		if (!((plaatje_pos.x > rel_pos_2.x - micro_var*abs(rel_pos_2.x) - delta_var*abs(delta_pos.x)) &&
+			(plaatje_pos.x < rel_pos_2.x + micro_var*abs(rel_pos_2.x) + delta_var*abs(delta_pos.x)) &&
+			(plaatje_pos.y > rel_pos_2.y - micro_var*abs(rel_pos_2.y) - delta_var*abs(delta_pos.y)) &&
+			(plaatje_pos.y < rel_pos_2.y + micro_var*abs(rel_pos_2.y) + delta_var*abs(delta_pos.y))))
 			
 		{
 			
